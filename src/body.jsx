@@ -3,7 +3,8 @@ import React, {useState, useEffect} from "react";
 
 export default function Body(){
     
-    const myAPI = "https://football-standings-api.vercel.app/leagues"
+    const myAPI = "https://www.thesportsdb.com/api/v1/json/3/all_leagues.php"
+
 
     const[leagues, setLeagues] = useState([]);
     // const[loading, setLoading] = useState(true);
@@ -12,22 +13,23 @@ export default function Body(){
         const fetchData = async () =>{
         const response = await fetch(myAPI);
         const data = await response.json();
-        setLeagues(data.data);
-        console.log(data);
+        const soccerLeagues = data.leagues.filter(l => l.strSport === "Soccer");
+
+        setLeagues(soccerLeagues);
+        console.log(soccerLeagues);
         }
         fetchData();
         },[])
 
-// const ingredientsListItems = props.ingredients.map((ingredient) => (
-//     <li key={ingredient}>{ingredient}</li>
-//   ));
 
     const leagueListItems = leagues.map((leagues) => (
-        <li key = {leagues.id}>{leagues.name}</li>
+        <li key = {leagues.strLeague}>{leagues.strLeague}</li>
     ));
 
-
-    return(
-        <ul>{leagueListItems}</ul>
+    return (
+  
+      <section>
+         <ul>{leagueListItems}</ul>
+      </section>
     )
 }
