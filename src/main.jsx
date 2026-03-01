@@ -2,6 +2,7 @@
 import { createRoot } from 'react-dom/client'
 import Header from './header.jsx'
 import Body from './body.jsx'
+import './app.css'
 
 
 function Page(){

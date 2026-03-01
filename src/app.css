@@ -4,4 +4,185 @@
 body{
   margin: 0;
   background-color: #FAFAF8;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.header{
+  display: flex;
+  background-color: white;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+}
+
+.page-content {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 12px 20px 40px;
+}
+
+form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-height: 44px;
+  padding: 30px 0 16px;
+}
+
+input {
+    border-radius: 6px;
+    border: 1px solid #D1D5DB;
+    padding: 9px 13px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    flex-grow: 1;
+    min-width: 150px;
+    max-width: 400px;
+}
+
+button {
+    font-family: Inter, sans-serif;
+    border-radius: 6px;
+    border: none;
+    background-color: #1c1c1b;
+    color: #FAFAF8;
+    width: 150px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: inline-flex;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+ul.equipment {
+    margin-bottom: 24px;
+}
+
+ul.equipment > li {
+    color: #475467;
+    line-height: 28px;
+}
+
+ul, ol{
+list-style: revert; 
+  margin: revert;
+  padding: revert;
+}
+
+
+.workout-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;                  /* adds breathing room between text & button */
+  flex-wrap: wrap;
+  border-radius: 8px;
+  background: #F0EFEB;
+  padding: 14px 28px;         /* slightly taller padding for balance */
+}
+
+/* left text block */
+.workout-container h3 {
+  margin: 0 0 4px 0;          /* remove default margins */
+  font-size: 1.125rem;
+  font-weight: 600;           /* bump to match your bold list heading */
+  line-height: 1.4;
+  color: #111827;             /* darker text */
+}
+
+.workout-container p {
+  margin: 0;
+  color: #6B7280;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* button */
+.workout-container button {
+  border: none;
+  border-radius: 6px;
+  background: #D17557;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  color: #FAFAF8;
+  padding: 9px 17px;
+  font-family: Inter, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+ display: inline-flex;
+}
+
+.workout-container button:hover {
+  background: #c56446;
+}
+
+.workout-container button:active {
+  transform: scale(0.97);
+}
+
+.plan-container {
+  margin-top: 24px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid #E5E7EB;
+  padding: 18px;
+}
+
+.plan-error {
+  margin: 18px 0 0;
+  color: #B42318;
+  font-size: 0.9rem;
+}
+
+.plan-container h2 {
+  margin: 0 0 8px;
+}
+
+.plan-container > p {
+  margin: 0 0 16px;
+  color: #4B5563;
+}
+
+.plan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.plan-day {
+  background: #F9FAFB;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.plan-day h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.plan-day p {
+  margin: 0 0 10px;
+  color: #6B7280;
+  font-size: 0.875rem;
+}
+
+.plan-day ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+@media (max-width: 600px) {
+  .workout-container {
+    padding: 14px 16px;
+  }
+
+  button {
+    width: 100%;
+    justify-content: center;
+  }
 }
