@@ -1,24 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import "tailwindcss";
 
+/* Set the app's base page background and font. */
 body{
   margin: 0;
   background-color: #FAFAF8;
   font-family: "JetBrains Mono", monospace;
 }
 
+/* Style the header bar at the top of the app. */
 .header{
   display: flex;
   background-color: white;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
 }
 
+/* Center the main content and limit its width. */
 .page-content {
   max-width: 880px;
   margin: 0 auto;
   padding: 12px 20px 40px;
 }
 
+/* Arrange the input form so it wraps cleanly on small screens. */
 form{
   display: flex;
   justify-content: center;
@@ -29,6 +33,7 @@ form{
   padding: 30px 0 16px;
 }
 
+/* Style the equipment input field. */
 input {
     border-radius: 6px;
     border: 1px solid #D1D5DB;
@@ -39,6 +44,7 @@ input {
     max-width: 400px;
 }
 
+/* Apply the shared button treatment used across the app. */
 button {
     font-family: Inter, sans-serif;
     border-radius: 6px;
@@ -53,20 +59,24 @@ button {
     transition: background 0.2s ease, transform 0.1s ease;
 }
 
+/* Visually mute buttons that cannot be clicked. */
 button:disabled {
     opacity: 0.6;
     cursor: not-allowed;
 }
 
+/* Add spacing below the equipment list. */
 ul.equipment {
     margin-bottom: 24px;
 }
 
+/* Keep list items readable with a softer text color. */
 ul.equipment > li {
     color: #475467;
     line-height: 28px;
 }
 
+/* Restore default list markers and spacing after resets. */
 ul, ol{
 list-style: revert; 
   margin: revert;
@@ -74,6 +84,7 @@ list-style: revert;
 }
 
 
+/* Layout the workout prompt text and button in one card. */
 .workout-container {
   display: flex;
   justify-content: space-between;
@@ -85,7 +96,7 @@ list-style: revert;
   padding: 14px 28px;         /* slightly taller padding for balance */
 }
 
-/* left text block */
+/* Style the heading inside the workout prompt card. */
 .workout-container h3 {
   margin: 0 0 4px 0;          /* remove default margins */
   font-size: 1.125rem;
@@ -94,6 +105,7 @@ list-style: revert;
   color: #111827;             /* darker text */
 }
 
+/* Style the description inside the workout prompt card. */
 .workout-container p {
   margin: 0;
   color: #6B7280;
@@ -101,7 +113,7 @@ list-style: revert;
   line-height: 1.5;
 }
 
-/* button */
+/* Override the shared button style inside the workout prompt card. */
 .workout-container button {
   border: none;
   border-radius: 6px;
@@ -116,14 +128,17 @@ list-style: revert;
  display: inline-flex;
 }
 
+/* Add a hover state for the workout button. */
 .workout-container button:hover {
   background: #c56446;
 }
 
+/* Slightly shrink the button while it is being pressed. */
 .workout-container button:active {
   transform: scale(0.97);
 }
 
+/* Frame the generated workout plan output. */
 .plan-container {
   margin-top: 24px;
   background: white;
@@ -132,27 +147,32 @@ list-style: revert;
   padding: 18px;
 }
 
+/* Surface API or validation errors below the form. */
 .plan-error {
   margin: 18px 0 0;
   color: #B42318;
   font-size: 0.9rem;
 }
 
+/* Tighten spacing under the plan heading. */
 .plan-container h2 {
   margin: 0 0 8px;
 }
 
+/* Style the plan summary copy. */
 .plan-container > p {
   margin: 0 0 16px;
   color: #4B5563;
 }
 
+/* Place workout day cards in a responsive grid. */
 .plan-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 12px;
 }
 
+/* Style each individual workout day card. */
 .plan-day {
   background: #F9FAFB;
   border: 1px solid #E5E7EB;
@@ -160,22 +180,26 @@ list-style: revert;
   padding: 12px;
 }
 
+/* Size the heading inside each day card. */
 .plan-day h3 {
   margin: 0 0 6px;
   font-size: 1rem;
 }
 
+/* Style the focus text inside each day card. */
 .plan-day p {
   margin: 0 0 10px;
   color: #6B7280;
   font-size: 0.875rem;
 }
 
+/* Keep exercise bullets aligned inside each card. */
 .plan-day ul {
   margin: 0;
   padding-left: 18px;
 }
 
+/* Stack the call-to-action more comfortably on narrow screens. */
 @media (max-width: 600px) {
   .workout-container {
     padding: 14px 16px;

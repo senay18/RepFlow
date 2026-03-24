@@ -2,10 +2,12 @@ import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from "@tailwindcss/vite"
 
+// Create a development-only API endpoint for generating workout plans.
 function workoutApiPlugin(apiKey, initialModel) {
   return {
     name: 'workout-api',
     configureServer(server) {
+      // Handle local frontend requests for `/api/workout-plan`.
       server.middlewares.use("/api/workout-plan", async (req, res) => {
         if (req.method !== "POST") {
           res.statusCode = 405;
@@ -39,6 +41,7 @@ function workoutApiPlugin(apiKey, initialModel) {
             return;
           }
 
+          // Ask Claude to return a strict JSON workout plan from the equipment list.
           const prompt = `
 You are an expert strength coach. Build a practical 3-day workout plan using only the user's equipment.
 Return only valid JSON with this exact shape:
@@ -70,6 +73,7 @@ User equipment: ${equipment.join(", ")}
             "anthropic-version": "2023-06-01",
           };
 
+          // Send the prompt to the selected Anthropic model.
           const requestPlan = async (modelId) => {
             const response = await fetch("https://api.anthropic.com/v1/messages", {
               method: "POST",
@@ -90,6 +94,7 @@ User equipment: ${equipment.join(", ")}
           let modelUsed = initialModel;
           let { response, data } = await requestPlan(modelUsed);
 
+          // Retry with an available model if the configured one is missing.
           if (!response.ok && response.status === 404 && data?.error?.type === "not_found_error") {
             const modelListResponse = await fetch("https://api.anthropic.com/v1/models", {
               method: "GET",
@@ -131,6 +136,8 @@ User equipment: ${equipment.join(", ")}
 
           const text = data?.content?.[0]?.text || "";
           const extractedJson = text.match(/\{[\s\S]*\}/)?.[0];
+
+          // Parse the JSON block returned by Claude before sending it to the client.
           const plan = JSON.parse(extractedJson || "{}");
 
           res.statusCode = 200;
@@ -148,6 +155,7 @@ User equipment: ${equipment.join(", ")}
   };
 }
 
+// Load environment configuration and register the Vite plugins.
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, ".", "");
   const apiKey = env.CLAUDE_API_KEY;

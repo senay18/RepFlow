@@ -1,5 +1,7 @@
 
+// Show the current equipment list and the workout-generation action.
 export default function ExerciseList(props){
+    // Turn each equipment entry into a list item for display.
     const ExerciseListItems = props.workouts.map((workout, index)=>(
         <li key={`${workout}-${index}`}>{workout}</li>
     ));

@@ -1,6 +1,7 @@
 import './app.css'
 import headerImg from "./assets/gym.png"
 
+// Render the logo and app title at the top of the page.
 export default function Header() {
 
   return (
@@ -9,4 +10,3 @@ export default function Header() {
           <h1 className=' font-[JetBrains-mono] text-Black text-3xl '>RepFlow</h1>
       </div>
 )}
-

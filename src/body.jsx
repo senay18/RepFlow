@@ -2,15 +2,17 @@ import './app.css'
 import React from "react";
 import ExerciseList from './ExerciseList';
 
+// Manage equipment input, list state, and generated workout plans.
 export default function Body(){
 
-    //store users workouts
+    // Store the equipment list and the current plan request state.
     const[workouts, setWorkouts] = React.useState([]);
     const [equipmentInput, setEquipmentInput] = React.useState("");
     const [workoutPlan, setWorkoutPlan] = React.useState(null);
     const [isGenerating, setIsGenerating] = React.useState(false);
     const [planError, setPlanError] = React.useState("");
 
+    // Add equipment unless the input is blank or already present.
     function addWorkout(event){
         event.preventDefault();
         const newWorkout = equipmentInput.trim();
@@ -28,6 +30,7 @@ export default function Body(){
         setEquipmentInput("");
     }
 
+    // Ask the local API to build a workout plan from the saved equipment.
     async function createWorkoutPlan(){
         if (workouts.length === 0 || isGenerating) {
             return;
@@ -63,6 +66,7 @@ export default function Body(){
 
     return(
     <main className='page-content'>
+        {/* Collect equipment before generating a plan. */}
         <form onSubmit={addWorkout}>
             <input
             type='text'
@@ -75,6 +79,7 @@ export default function Body(){
         <button className='p-3 text-center justify-center items-center'>+ Add workout</button>
         </form>
 
+        {/* Show the equipment list once at least one item has been added. */}
         {workouts.length > 0 && (
             <ExerciseList
             workouts={workouts}
@@ -85,6 +90,7 @@ export default function Body(){
 
         {planError && <p className="plan-error">{planError}</p>}
 
+        {/* Render the generated plan when the API returns valid data. */}
         {workoutPlan && (
             <section className="plan-container" aria-live="polite">
                 <h2>{workoutPlan.title}</h2>

@@ -4,6 +4,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
+// Configure ESLint for the React app and skip generated build output.
 export default defineConfig([
   globalIgnores(['dist']),
   {
@@ -22,6 +23,7 @@ export default defineConfig([
         sourceType: 'module',
       },
     },
+    // Allow intentionally unused identifiers that follow the project's naming convention.
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
