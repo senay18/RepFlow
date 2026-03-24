@@ -51,7 +51,8 @@ button {
     border: none;
     background-color: #1c1c1b;
     color: #FAFAF8;
-    width: 150px;
+    width: auto;
+    padding: 9px 17px;
     font-size: 0.875rem;
     font-weight: 500;
     display: inline-flex;

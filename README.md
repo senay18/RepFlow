@@ -2,6 +2,8 @@
 
 RepFlow is a React workout planner that lets users enter available gym equipment and generate a custom 3-day training plan using Claude (Anthropic API).
 
+Live app: https://rep-flow-git-main-senay18s-projects.vercel.app
+
 ## What this project does
 
 - Collects equipment input from the user (for example: dumbbells, cable, kettlebells).
@@ -13,7 +15,8 @@ RepFlow is a React workout planner that lets users enter available gym equipment
 
 - React + Vite
 - TailwindCSS (via Vite plugin) + custom CSS
-- Claude API (`/v1/messages`) through a Vite dev-server middleware route (`/api/workout-plan`)
+- Vercel deployment with a serverless API route at `/api/workout-plan`
+- Claude API (`/v1/messages`)
 
 ## Prerequisites
 
@@ -50,6 +53,14 @@ npm run dev
 
 Open the local URL shown in your terminal (usually `http://localhost:5173`).
 
+## Deployment
+
+This project is deployed on Vercel.
+
+Live URL:
+
+https://rep-flow-git-main-senay18s-projects.vercel.app
+
 ## Other scripts
 
 - Lint:
@@ -72,7 +83,7 @@ npm run preview
 
 ## Security note
 
-The Claude key is read on the server side (Vite middleware) and is not sent directly from browser code. Do not commit `.env` with real secrets.
+The Claude key is read on the server side through the Vercel API route and is not sent directly from browser code. Do not commit `.env` with real secrets.
 
 ## Troubleshooting
 
